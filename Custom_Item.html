@@ -1,0 +1,106 @@
+<html>
+<head>
+    <title>Custom Display Item</title>
+
+    <!--[if gte mso 9]><xml>
+    <mso:CustomDocumentProperties>
+    <mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+    <mso:MasterPageDescription msdt:dt="string">Displays the default result item template.</mso:MasterPageDescription>
+    <mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+    <mso:TargetControlType msdt:dt="string">;#SearchResults;#</mso:TargetControlType>
+    <mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+    <mso:ManagedPropertyMapping msdt:dt="string">'Product','Product','CheckoutUserOWSUSER':'CheckoutUserOWSUSER','Title':'Title','Path':'Path','Size':'Size','Description':'Description','EditorOWSUSER':'EditorOWSUSER','LastModifiedTime':'LastModifiedTime','CollapsingStatus':'CollapsingStatus','HitHighlightedSummary':'HitHighlightedSummary','HitHighlightedProperties':'HitHighlightedProperties','FileExtension':'FileExtension','ViewsLifeTime':'ViewsLifeTime','ParentLink':'ParentLink','FileType':'FileType','IsContainer':'IsContainer','SecondaryFileExtension':'SecondaryFileExtension','DisplayAuthor':'DisplayAuthor','SiteTitle':'SiteTitle','Filename':'Filename','ContentType':'ContentType','SPSiteURL':'SPSiteURL','ListURL':'ListURL'</mso:ManagedPropertyMapping>
+    <mso:_dlc_DocId msdt:dt="string">2PPW52Q5PMDV-6-317</mso:_dlc_DocId>
+    <mso:_dlc_DocIdItemGuid msdt:dt="string">8bfd50a1-79b3-4cbf-a4b2-f21c58476e0f</mso:_dlc_DocIdItemGuid>
+    <mso:_dlc_DocIdUrl msdt:dt="string">http://spdev-2103.cloudapp.net/_layouts/15/DocIdRedir.aspx?ID=2PPW52Q5PMDV-6-317, 2PPW52Q5PMDV-6-317</mso:_dlc_DocIdUrl>
+    <mso:HtmlDesignStatusAndPreview msdt:dt="string">http://spdev-2103.cloudapp.net/_catalogs/masterpage/Display Templates/Search/Custom_Item.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+    <mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+    <mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+    <mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+    </mso:CustomDocumentProperties>
+    </xml><![endif]-->
+</head>
+    <body>
+        <script>
+            $includeCSS(this.url, "http://spdev-2103.cloudapp.net/Style Library/customsearch.css");
+        </script>
+
+        <div id="Item_Default">
+            <!--#_
+
+                    if(!$isNull(ctx.CurrentItem) && !$isNull(ctx.ClientControl)){
+                            var id = ctx.ClientControl.get_nextUniqueId();
+                            var itemId = id + Srch.U.Ids.item;
+                    var hoverId = id + Srch.U.Ids.hover;
+                    var hoverUrl = "~sitecollection/_catalogs/masterpage/Display Templates/Search/Item_Default_HoverPanel.js";
+
+                    $setResultItem(itemId, ctx.CurrentItem);
+
+                    ctx.CurrentItem.csr_Icon = Srch.U.getIconUrlByFileExtension(ctx.CurrentItem)
+
+                    ctx.currentItem_ShowHoverPanelCallback = Srch.U.getShowHoverPanelCallback(itemId, hoverId, hoverUrl);
+                            ctx.currentItem_HideHoverPanelCallback = Srch.U.getHideHoverPanelCallback();
+
+                        if ((ctx.CurrentItem.Path).indexOf(".") != -1 && (ctx.CurrentItem.Path).indexOf(".aspx") == -1)
+                            {
+                            var arrlibraryURL = (ctx.CurrentItem.Path).split("/");
+                            var libraryURL = (ctx.CurrentItem.Path).replace("/" + arrlibraryURL[arrlibraryURL.length-1],"");
+                            var LibraryName = arrlibraryURL[(ctx.CurrentItem.Path).split("/").length-2];
+                            }
+							
+							var availableSorts = ctx.DataProvider.get_availableSorts();
+							availableSorts.push({"name":"Product_ASC","sorts":[{"p":"Product","d":0}]});
+							availableSorts.push({"name":"Product_DEC","sorts":[{"p":"Product","d":1}]});
+							ctx.DataProvider.set_availableSorts(availableSorts);
+							
+            _#-->
+            <div id="_#= $htmlEncode(itemId) =#_" name="Item" data-displaytemplate="DefaultItem" class="ms-srch-item" onmouseover="_#= ctx.currentItem_ShowHoverPanelCallback =#_" onmouseout="_#= ctx.currentItem_HideHoverPanelCallback =#_" style="padding-bottom: 15px; margin-bottom: 15px; border-bottom-color: #d0d0d0; border-bottom-width: 1px; border-bottom-style: dotted;">
+                <div id="_#= $htmlEncode(hoverId) =#_" class="ms-srch-hover-outerContainer"></div>
+					<div id="Data">
+                    <table>                       
+ <tr>
+                            <td class="gm-agg-col-data-icn">
+                                <span class="srch_Icon">
+                                    <img align="absMiddle" src="_#=ctx.CurrentItem.csr_Icon=#_" alt="_#=ctx.CurrentItem.Path=#_">
+                                    <!--#_
+                            if(!$isNull(ctx.CurrentItem.GMRecordDeclareDate))
+                            {
+                _#-->
+                                    <img width="16" height="16" title="" class="ms-vb-icon-overlay" alt="" src="/_layouts/15/images/lockoverlay.png" />
+                                    <!--#_
+                    }
+                _#-->
+                                </span>
+                            </td>
+                            <td class="gm-agg-col-data">
+                                <div class="srch_MainTitle">
+                                    <!--#_
+                            if(!$isNull(ctx.CurrentItem.GMRecordDeclareDate))
+                            {
+                _#-->
+                                    <a class="Title_Button" href="_#=ctx.CurrentItem.Path=#_">_#=ctx.CurrentItem.Filename=#_ </a>
+                                    <!--#_
+                    }
+                    else
+                    {
+                _#-->
+                                    <a class="Title_Button" style="padding-left:6px;" href="_#=ctx.CurrentItem.Path=#_">_#=ctx.CurrentItem.Filename=#_ </a>
+                                    <!--#_
+                    }
+                _#-->
+                                </div>
+                            </td>
+							<td class="gm-agg-col-data-small">
+								_#=ctx.CurrentItem.Product=#_ &nbsp;
+							</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--#_
+            }
+    _#-->
+
+        </div>
+    </body>
+</html>
